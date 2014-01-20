@@ -40,17 +40,17 @@ class Interpreter
      *                                 <END>
      *
      * @param array $program as defined by the instruction.
+     * @return array Array Map of all variables.
      */
     public function interprete(array $program)
     {
          $this->fillMap($program);
          $programRunning = true;
          $instruction = reset($this->programMap);
+        try{
+
          while($programRunning)
          {
-             if ($instruction instanceof EndInstruction) { //TODO something object oriented goes here.
-                 return $this->variableMap;
-             }
              /**
               * @var $instruction Instruction
               */
@@ -69,12 +69,18 @@ class Interpreter
                 $programRunning = false;
              }
          }
+        } catch (EndInstructionException $e)
+        {
+            //regular end of the instruction line.
+        }
         echo "Program has finished running.";
         return $this->variableMap;
     }
 
     /**
      * @param array $program
+     * @throws InvalidArgumentException
+     * @return void
      */
     private function fillMap(array $program)
     {

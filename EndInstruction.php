@@ -1,5 +1,7 @@
 <?php
 
+class EndInstructionException extends Exception
+{}
 
 class EndInstruction implements Instruction {
 
@@ -9,6 +11,6 @@ class EndInstruction implements Instruction {
      */
     public function execute(array &$variableMap)
     {
-
+        throw new EndInstructionException();
     }
 }
