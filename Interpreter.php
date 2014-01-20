@@ -58,7 +58,11 @@ class Interpreter
              if ($nextLabel === null) {
                  $instruction = next($this->programMap);
              } else {
-                 $instruction = $this->programMap[$nextLabel];
+                 reset($this->programMap);
+                 do
+                 {
+                     list($label, $instruction) = each($this->programMap);
+                 } while ($nextLabel != $label);
              }
              if ($instruction === false)
              {
