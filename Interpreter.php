@@ -8,6 +8,7 @@ require_once "AddInstruction.php";
 require_once "SubInstruction.php";
 require_once "MulInstruction.php";
 require_once "DivInstruction.php";
+require_once "ModInstruction.php";
 require_once "GotoInstruction.php";
 require_once "GotoIfInstruction.php";
 require_once "EndInstruction.php";
@@ -34,6 +35,7 @@ class Interpreter
      *                                 <SUB> <VAR> <VARORLITERAL> |
      *                                 <MUL> <VAR> <VARORLITERAL> |
      *                                 <DIV> <VAR> <VARORLITERAL> |
+     *                                 <MOD> <VAR> <VARORLITERAL> |
      *                                 <SET> <VAR> <VARORLITERAL>
      *                                 <PRINT> <VARORLITERAL> |
      *                                 <GOTOIF> <VAR> <VARORLITERAL> #goto if variable isn't null.
@@ -119,6 +121,11 @@ class Interpreter
                     $variable = $tokens[2];
                     $variableOrliteral = new VariableOrLiteral(implode(' ', array_slice($tokens, 3)));
                     $this->programMap[$line] = new DivInstruction($variable, $variableOrliteral);
+                    break;
+                case 'MOD':
+                    $variable = $tokens[2];
+                    $variableOrliteral = new VariableOrLiteral(implode(' ', array_slice($tokens, 3)));
+                    $this->programMap[$line] = new ModInstruction($variable, $variableOrliteral);
                     break;
                 case 'GOTO':
                     $variableOrliteral = new VariableOrLiteral(implode(' ', array_slice($tokens, 2)));

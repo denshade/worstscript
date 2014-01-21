@@ -52,6 +52,12 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('2', $map['A']);
     }
 
+    public function testMod()
+    {
+        $interpreter = new Interpreter();
+        $map = $interpreter->interprete(array('10 SET A "6"', '20 MOD A "3"'));
+        $this->assertEquals('0', $map['A']);
+    }
     public function testGoto()
     {
         $interpreter = new Interpreter();
