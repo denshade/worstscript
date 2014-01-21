@@ -1,6 +1,8 @@
 worstscript
 ===========
 
+[![Build Status](https://travis-ci.org/denshade/worstscript.png?branch=master)](https://travis-ci.org/denshade/worstscript)
+
 worstscript, also wildely known as sausage script, is the award winning scripting language near you!
 
 Never before have we been blessed with this kind of features built upon the PHP platform * for performance !*.
