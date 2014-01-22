@@ -1,17 +1,6 @@
 <?php
 
-require_once "Instruction.php";
-require_once "DualInstruction.php";
-require_once "PrintInstruction.php";
-require_once "SetInstruction.php";
-require_once "AddInstruction.php";
-require_once "SubInstruction.php";
-require_once "MulInstruction.php";
-require_once "DivInstruction.php";
-require_once "ModInstruction.php";
-require_once "GotoInstruction.php";
-require_once "GotoIfInstruction.php";
-require_once "EndInstruction.php";
+require_once "InstructionMapper.php";
 require_once "VariableOrLiteral.php";
 
 
@@ -19,9 +8,41 @@ class Interpreter
 {
 
     /**
+     * @param array $parameters These are the initial parameters as program parameters.
+     */
+    public function __construct(array $parameters = array())
+    {
+        $argumentNumber = 0;
+        foreach($parameters as $parameter)
+        {
+            $this->variableMap[$argumentNumber] = $parameter;
+        }
+    }
+    /**
      * @var array Map of Line => Instruction
      */
     private $programMap = array();
+
+    /**
+     * @var boolean
+     */
+    private $showMapOnCommand = false;
+
+    /**
+     * @param boolean $showMapOnCommand
+     */
+    public function setShowMapOnCommand($showMapOnCommand)
+    {
+        $this->showMapOnCommand = $showMapOnCommand;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowMapOnCommand()
+    {
+        return $this->showMapOnCommand;
+    }
 
     /**
      * @var array map of variables String => value.
@@ -46,9 +67,10 @@ class Interpreter
      */
     public function interprete(array $program)
     {
-         $this->fillMap($program);
-         $programRunning = true;
-         $instruction = reset($this->programMap);
+        $mapper = new InstructionMapper();
+        $this->programMap = $mapper->fillMap($program);
+        $programRunning = true;
+        $instruction = reset($this->programMap);
         try{
 
          while($programRunning)
@@ -57,6 +79,11 @@ class Interpreter
               * @var $instruction Instruction
               */
              $nextLabel = $instruction->execute($this->variableMap);
+             if( $this->getShowMapOnCommand())
+             {
+                 echo $nextLabel."\n";
+                print_r($this->variableMap);
+             }
              if ($nextLabel === null) {
                  $instruction = next($this->programMap);
              } else {

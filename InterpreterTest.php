@@ -71,5 +71,13 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
         $map = $interpreter->interprete(array('10 SET A "30"', '20 GOTOIF A "40"','30 SET A "5"', '35 END', '40 SET A "8"' ));
         $this->assertEquals('8', $map['A']);
     }
+
+    public function testNFac()
+    {
+        $interpreter = new Interpreter(array(10));
+        $interpreter->setShowMapOnCommand(true);
+        //$map = $interpreter->interprete(array('1 SET N 0', '2 SET R N', '4 MUL R N', '5 SUB N "1"', '6 GOTOIF N "4"', '7 END' ));
+        //$this->assertEquals('3628800', $map['R']);
+    }
 }
  
