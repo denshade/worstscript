@@ -26,7 +26,7 @@ You'll be happy to see that this is the only documentation. Because let's be hon
 So we parse worst script using PHP which is a script language that can run on basically any machine preferably another virtual machine. 
 
 In the next release we are planning to have a "GOTO if" statement. _WOW_ 
-We also plan of switching all parameters around, just because we can. You will notice once you programs start to fail.
+We also plan of switching all parameters around, just because we can. You will notice once your programs start to fail.
 
 If you find bugs and have to upgrade you'll have to upgrade to the latest and worst version which is promised to be highly unstable! Remember you are our testers!
 
