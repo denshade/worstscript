@@ -31,7 +31,7 @@ We also plan of switching all parameters around, just because we can. You will n
 If you find bugs and have to upgrade you'll have to upgrade to the latest and worst version which is promised to be highly unstable! Remember you are our testers!
 
 
-Just look at these reviews from 2 people who loved who were totally not me!
+Just look at these reviews from 2 people who loved worstscript, who were totally not me!
 
 ** Hi, I have a medium to big sized company. Before we switched we heard developers complain about design patterns and difficulties with classes and namespaces. That is now a thing of the past.
 They can now focus on completely other problems now!
