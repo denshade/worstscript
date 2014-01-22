@@ -24,4 +24,13 @@ class GotoInstruction implements Instruction
     {
         return $this->variableOrLiteral->getValue($variableMap);
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return "GOTOIF" .$this->variableOrLiteral;
+    }
+
 }

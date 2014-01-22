@@ -17,4 +17,12 @@ class AddInstruction extends DualInstruction
             $variableMap[$this->variable] .= $value;
         }
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+       return "" . $this->variable . " += ".$this->variableOrLiteral;
+    }
 }

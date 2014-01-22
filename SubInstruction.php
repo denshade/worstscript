@@ -17,4 +17,13 @@ class SubInstruction extends DualInstruction
             throw new InvalidArgumentException('Subtracting from '.$this->variable . ' is impossible it is not numeric');
         }
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->variable . " -= ".$this->variableOrLiteral;
+    }
+
 }

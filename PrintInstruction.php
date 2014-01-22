@@ -24,4 +24,13 @@ class PrintInstruction implements Instruction
     {
         echo $this->variableOrLiteral->getValue($variableMap)."\n";
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return "PRINT " . $this->variableOrLiteral;
+    }
+
 }

@@ -13,4 +13,11 @@ class EndInstruction implements Instruction {
     {
         throw new EndInstructionException();
     }
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return "END";
+    }
 }

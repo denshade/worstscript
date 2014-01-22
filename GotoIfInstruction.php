@@ -15,4 +15,12 @@ class GotoIfInstruction extends DualInstruction
         }
         return null;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return "GOTOIF" . $this->variable . " " . $this->variableOrLiteral;
+    }
 }

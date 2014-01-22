@@ -12,4 +12,13 @@ class SetInstruction extends DualInstruction
         $value = $this->variableOrLiteral->getValue($variableMap);
         $variableMap[$this->variable] = $value;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->variable . " = ".$this->variableOrLiteral;
+    }
+
 }

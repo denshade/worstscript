@@ -85,7 +85,7 @@ class Interpreter
              $nextLabel = $instruction->execute($this->variableMap);
              if( $this->getShowMapOnCommand())
              {
-                 echo $nextLabel."\n";
+                 echo $instruction. "\n";
                  print_r($this->variableMap);
              }
              if ($nextLabel === null) {

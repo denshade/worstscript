@@ -17,4 +17,13 @@ class ModInstruction extends DualInstruction
             throw new InvalidArgumentException('Module from '.$this->variable . ' is impossible it is not numeric');
         }
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return  $this->variable . " %= ".$this->variableOrLiteral;
+    }
+
 }

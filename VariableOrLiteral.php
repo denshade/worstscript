@@ -31,4 +31,12 @@ class VariableOrLiteral
         }
         return $value;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->variableOrLiteral;
+    }
 } 
