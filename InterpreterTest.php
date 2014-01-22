@@ -76,8 +76,8 @@ class InterpreterTest extends PHPUnit_Framework_TestCase
     {
         $interpreter = new Interpreter(array(10));
         $interpreter->setShowMapOnCommand(true);
-        //$map = $interpreter->interprete(array('1 SET N 0', '2 SET R N', '4 MUL R N', '5 SUB N "1"', '6 GOTOIF N "4"', '7 END' ));
-        //$this->assertEquals('3628800', $map['R']);
+        $map = $interpreter->interprete(array('1 SET N 0', '2 SET R "1"', '4 MUL R N', '5 SUB N "1"', '6 GOTOIF N "4"', '7 END' ));
+        $this->assertEquals('3628800', $map['R']);
     }
 }
  
