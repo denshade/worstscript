@@ -1,6 +1,7 @@
 <?php
 
 require_once "InstructionMapper.php";
+require_once "InstructionFlowEngine.php";
 require_once "VariableOrLiteral.php";
 
 
@@ -69,12 +70,15 @@ class Interpreter
     {
         $mapper = new InstructionMapper();
         $this->programMap = $mapper->fillMap($program);
-        $programRunning = true;
-        $instruction = reset($this->programMap);
+        $flowEngine = new InstructionFlowEngine($this->programMap);
         try{
-
-         while($programRunning)
+         while(true)
          {
+             $instruction = $flowEngine->getCurrentInstruction();
+             if ($instruction === null)
+             {
+                 break;
+             }
              /**
               * @var $instruction Instruction
               */
@@ -82,27 +86,19 @@ class Interpreter
              if( $this->getShowMapOnCommand())
              {
                  echo $nextLabel."\n";
-                print_r($this->variableMap);
+                 print_r($this->variableMap);
              }
              if ($nextLabel === null) {
-                 $instruction = next($this->programMap);
+                 $flowEngine->setNext();
              } else {
-                 reset($this->programMap);
-                 do
-                 {
-                     list($label, $instruction) = each($this->programMap);
-                 } while ($nextLabel != $label);
+                 $flowEngine->setNextLocation($nextLabel);
              }
-             if ($instruction === false)
-             {
-                $programRunning = false;
-             }
+
          }
         } catch (EndInstructionException $e)
         {
             //regular end of the instruction line.
         }
-        echo "Program has finished running.";
         return $this->variableMap;
     }
 

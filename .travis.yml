@@ -3,4 +3,4 @@ language: php
 php:
   - "5.4"
 
-script: phpunit InterpreterTest.php
+script: phpunit InterpreterTest.php InstructionFlowEngineTest.php
